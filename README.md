@@ -79,11 +79,11 @@ TerrainGen/
 
 ## Design Notes
 
-- Generation and rendering are fully independent. `TerrainMap` has no knowledge of OpenGL, textures, or windows — it produces plain biome/parameter data that can be consumed by the OpenGL renderer, the PPM exporter, or any future renderer without modification.
+- Generation and rendering are fully independent. `TerrainMap` has no knowledge of OpenGL, textures, or windows, it produces plain biome/parameter data that can be consumed by the OpenGL renderer, the PPM exporter, or any future renderer without modification.
 
 - Biome classification mirrors Minecraft's real Overworld system in structure. Continentalness and erosion decide the large-scale terrain shape (ocean vs. land, flat vs. mountainous) before climate (temperature/humidity) ever gets used for the specific biome flavor within that shape.
 
-- Noise is reused using coordinate offsetting. Several parameters that are related but need to vary independently (river carving weirdness vs. mountain-shape weirdness, or land temperature vs. broad ocean temperature) are sampled from the same underlying noise generator at different coordinate offsets or octave counts, rather than creating an entirely separate `NoiseGenerator` instance for each — this keeps memory/setup cost down while still producing visually distinct fields.
+- Noise is reused using coordinate offsetting. Several parameters that are related but need to vary independently (river carving weirdness vs. mountain-shape weirdness, or land temperature vs. broad ocean temperature) are sampled from the same underlying noise generator at different coordinate offsets or octave counts, rather than creating an entirely separate `NoiseGenerator` instance for each, this keeps memory/setup cost down while still producing visually distinct fields.
 
 ## Known Limitations / Future Work
 
