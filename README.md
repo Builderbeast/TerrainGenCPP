@@ -30,9 +30,12 @@ TerrainGen generates a 2D biome map from scratch (no external noise or terrain l
 1. Install [MSYS2](https://www.msys2.org).
 2. Open the **UCRT64** MSYS2 terminal (not the default MSYS2 shell) and install the toolchain:
    ```
-   pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-glfw
+   pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-ninja mingw-w64-ucrt-x86_64-glfw
    ```
-3. Make sure `C:\msys64\ucrt64\bin` is on your Windows `PATH`.
+3. Make sure `C:\msys64\ucrt64\bin` is on your Windows `PATH`:
+    ```
+    [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\msys64\ucrt64\bin", "User")
+    ```
 4. From the project root:
    ```
    cmake -B build -G Ninja
