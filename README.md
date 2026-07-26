@@ -36,6 +36,8 @@ TerrainGen generates a 2D biome map from scratch (no external noise or terrain l
     ```
     [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\msys64\ucrt64\bin", "User")
     ```
+    `Restart terminal`
+
 4. From the project root:
    ```
    cmake -B build -G Ninja
