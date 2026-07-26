@@ -10,6 +10,8 @@
 #include <ctime>
 #include <algorithm>
 
+#include "ImageExporter.h"
+
 #include "Renderer.h"
 
 #include "VertexBuffer.h"
@@ -127,7 +129,15 @@ int main() {
         GLCall(glEnable(GL_BLEND));
         GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
-        TerrainMap terrain(2000, 2000, time(0));
+        int seed = time(0);
+
+        TerrainMap terrain(2000, 2000, seed);
+
+        std::cout << std::to_string(seed) << std::endl;
+
+        ImageExporter exporter;
+        exporter.ExportBiomeMapToPPM(terrain, "Map_" + std::to_string(seed) + ".ppm");
+
         std::vector<unsigned char> biomeColorBuffer = GenerateBiomeColorBuffer(terrain);
 
         VertexArray va;
